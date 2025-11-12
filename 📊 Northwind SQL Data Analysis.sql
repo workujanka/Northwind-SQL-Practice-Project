@@ -20,7 +20,7 @@ customers
 
 orders
 
-orderdetails
+order_details
 
 products
 
@@ -97,7 +97,7 @@ SELECT
 FROM 
     orders o
 INNER JOIN 
-    orderdetails od ON o.orderid = od.orderid
+    order_details od ON o.orderid = od.orderid
 INNER JOIN 
     products p ON od.productid = p.productid
 LIMIT 10;
@@ -117,7 +117,7 @@ FROM
 INNER JOIN 
     customers c ON o.customerid = c.customerid
 INNER JOIN 
-    orderdetails od ON o.orderid = od.orderid
+    order_details od ON o.orderid = od.orderid
 INNER JOIN 
     products p ON od.productid = p.productid
 LIMIT 10;
@@ -131,7 +131,7 @@ SELECT
     p.productname,
     SUM(od.quantity * od.unitprice * (1 - od.discount)) AS total_sales
 FROM 
-    orderdetails od
+    order_details od
 JOIN 
     products p ON od.productid = p.productid
 GROUP BY 
@@ -147,7 +147,7 @@ SELECT
     cat.categoryname,
     SUM(od.quantity * od.unitprice * (1 - od.discount)) AS total_sales
 FROM 
-    orderdetails od
+    order_details od
 JOIN 
     products p ON od.productid = p.productid
 JOIN 
@@ -167,5 +167,6 @@ Multi-table joins using INNER JOIN
 Aggregating sales data with SUM
 
 Grouping results with GROUP BY
+
 
 Category-level analysis using JOIN with categories
